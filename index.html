@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" style="height: 100%;">
+  <head>
+    <title>Outdoors</title>
+    <style>
+.grid-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+}
+body {
+  font-family: Sans-Serif;
+  height: 100%;
+  margin: 0px;
+}
+.cell {
+}
+div {
+  /* https://stackoverflow.com/a/8855458 */
+  display: inline-block;
+  font-size: 24px;
+}
+    </style>
+  </head>
+  <body class="grid-container">
+    <div style="grid-column: 1 / 1; grid-row: 1 / span 2;">
+      <iframe
+        height="100%"
+        width="100%"
+        scrolling="no"
+        align="top"
+        frameborder="0"
+        allowtransparency="true"
+        src="https://weather.gc.ca/city/pages/on-118_metric_e.html#mainContent">
+      Observations: Ottawa, Ontario, Canada
+      </iframe>
+    </div>
+    <div style="grid-column: 2 / 2; grid-row: 1 / 1;">
+      <iframe
+        height="100%"
+        width="100%"
+        scrolling="no"
+        align="top"
+        frameborder="0"
+        allowtransparency="true"
+        src="https://weather.gc.ca/forecast/hourly/on-118_metric_e.html#wb-cont">
+        Forecast: Ottawa, Ontario, Canada
+      </iframe>
+    </div>
+    <div style="grid-column: 2 / 2; grid-row: 2 / 2;">
+      <iframe
+        height="100%"
+        width="100%"
+        scrolling="no"
+        align="top"
+        frameborder="0"
+        allowtransparency="true"
+        src="https://weather.gc.ca/airquality/pages/onaq-008_e.html#wb-cont">
+        Air Quality Health Index: Ottawa, Ontario, Canada
+      </iframe>
+    </div>
+  </body>
+</html>
