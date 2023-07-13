@@ -20,9 +20,24 @@ div {
   display: inline-block;
   font-size: 24px;
 }
+.refresh {
+  background-color: yellow;
+  position: absolute;
+  top: 0px;
+  left: 45%;
+  width: 10%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
     </style>
   </head>
   <body class="grid-container">
+    <div class="refresh" onclick="window.location.reload(true); return false;">
+      Refresh
+    </div>
     <div style="grid-column: 1 / 1; grid-row: 1 / span 2;">
       <iframe
         height="100%"
