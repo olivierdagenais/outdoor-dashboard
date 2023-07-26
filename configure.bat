@@ -86,7 +86,7 @@ REM                                       Display                              D
 Powercfg /SetacValueIndex %_Custom_Power% 7516b95f-f776-4464-8c53-06167f40cc99 aded5e82-b909-4619-9949-f5d71dac0bcb 50
 
 REM                                       Display                              Dimmed display brightness            %
-Powercfg /SetacValueIndex %_Custom_Power% 7516b95f-f776-4464-8c53-06167f40cc99 f1fbfde2-a960-4165-9f88-50667911ce96
+Powercfg /SetacValueIndex %_Custom_Power% 7516b95f-f776-4464-8c53-06167f40cc99 f1fbfde2-a960-4165-9f88-50667911ce96 25
 
 REM                                       Display                              Enable adaptive brightness           On
 Powercfg /SetacValueIndex %_Custom_Power% 7516b95f-f776-4464-8c53-06167f40cc99 fbd9aa66-9553-4097-ba44-ed6e9d65eab8 001
