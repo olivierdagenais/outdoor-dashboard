@@ -103,7 +103,7 @@ Powercfg /SetacValueIndex %_Custom_Power% 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 3
 
 
 REM                                       Battery                              Critical battery notification        Off
-Powercfg /SetacValueIndex %_Custom_Power% e73a048d-bf27-4f12-9731-8b2076e8891f 5dbb7c9f-38e9-40d2-9749-4f8a0e9f640f 002
+Powercfg /SetacValueIndex %_Custom_Power% e73a048d-bf27-4f12-9731-8b2076e8891f 5dbb7c9f-38e9-40d2-9749-4f8a0e9f640f 000
 
 REM                                       Battery                              Critical battery action              Do nothing
 Powercfg /SetacValueIndex %_Custom_Power% e73a048d-bf27-4f12-9731-8b2076e8891f 637ea02f-bbcb-4015-8e2c-a1c7b9c0b546 000
