@@ -43,8 +43,8 @@ echo                                      Wireless Adapter Settings            P
 Powercfg /SetacValueIndex %_Custom_Power% 19cbb8fa-5279-450e-9fac-8a3d5fedd0c1 12bbebe6-58d6-4636-95bb-3217ef867c1a 003
 
 
-echo                                      Sleep                                Sleep after                          Seconds (20 minutes)
-Powercfg /SetacValueIndex %_Custom_Power% 238c9fa8-0aad-41ed-83f4-97be242c8f20 29f6c1db-86da-48c5-9fdb-f2b67b1f44da 1200
+echo                                      Sleep                                Sleep after                          Seconds (never)
+Powercfg /SetacValueIndex %_Custom_Power% 238c9fa8-0aad-41ed-83f4-97be242c8f20 29f6c1db-86da-48c5-9fdb-f2b67b1f44da 0
 
 echo                                      Sleep                                Allow hybrid sleep                   On
 Powercfg /SetacValueIndex %_Custom_Power% 238c9fa8-0aad-41ed-83f4-97be242c8f20 94ac6d29-73ce-41a6-809f-6363ba21b47e 001
@@ -79,8 +79,8 @@ echo                                      Processor power management           M
 Powercfg /SetacValueIndex %_Custom_Power% 54533251-82be-4824-96c1-47b60b740d00 bc5038f7-23e0-4960-96da-33abaf5935ec 100
 
 
-echo                                      Display                              Turn off display after               Seconds (20 minutes)
-Powercfg /SetacValueIndex %_Custom_Power% 7516b95f-f776-4464-8c53-06167f40cc99 3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e 1200
+echo                                      Display                              Turn off display after               Seconds (5 hours)
+Powercfg /SetacValueIndex %_Custom_Power% 7516b95f-f776-4464-8c53-06167f40cc99 3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e 18000
 
 echo                                      Display                              Display brightness                   50%%
 Powercfg /SetacValueIndex %_Custom_Power% 7516b95f-f776-4464-8c53-06167f40cc99 aded5e82-b909-4619-9949-f5d71dac0bcb 50
