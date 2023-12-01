@@ -21,8 +21,8 @@ Set _Custom_Power=050FA492-B608-411A-9345-CDF1BA46634B
 Powercfg /DUPLICATESCHEME SCHEME_MAX %_Custom_Power%
 Powercfg /CHANGENAME %_Custom_Power% "Dashboard"
 echo:
-echo Set the hibernate timeout for the current scheme
-Powercfg /Change -hibernate-timeout-ac 30
+echo Set the hibernate timeout for the current scheme to 0 (never)
+Powercfg /Change -hibernate-timeout-ac 0
 
 
 REM /SetacValueIndex Scheme_GUID Sub_GUID Setting_GUID SettingIndex
