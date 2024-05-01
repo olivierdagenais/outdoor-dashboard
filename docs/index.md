@@ -64,7 +64,7 @@ figure {
       align="top"
       frameborder="0"
       allowtransparency="true"
-      src="https://map.purpleair.com/1/m/i/mAQI/a10/p604800/cC0?select=93591#14.06/45.28384/-75.87433">
+      src="https://map.purpleair.com/1/m/i/mAQI/a10/p604800/cC0#10.22/45.2686/-75.9445">
       PurpleAir Real-Time Air Quality Map - Eagleson at Stonehaven
     </iframe>
   </div>
