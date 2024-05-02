@@ -118,4 +118,4 @@ case "${OS}" in
         path_prefix="tools/${qualified_name}"
         ;;
 esac
-PATH="$(pwd)/${path_prefix}:$PATH" "${0#./}" $@
+PATH="$(pwd)/${path_prefix}:$(pwd)/node_modules/.bin:$PATH" "${0#./}" $@
