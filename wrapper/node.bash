@@ -118,4 +118,5 @@ win)
   path_prefix="tools/${qualified_name}"
   ;;
 esac
+# shellcheck disable=SC2068
 PATH="$(pwd)/${path_prefix}:$(pwd)/node_modules/.bin:$PATH" "${0#./}" $@
