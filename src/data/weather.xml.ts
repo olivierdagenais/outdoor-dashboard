@@ -1,4 +1,5 @@
 import process from "node:process";
+
 export {};
 
 /**
@@ -12,9 +13,11 @@ const cityPageBaseUrl = "https://dd.weather.gc.ca/citypage_weather/xml";
 const provinceSlashCityFile = "ON/s0000430_e.xml";
 
 async function fetchXml(url: RequestInfo | URL) {
-  const response = await fetch(url);
-  if (!response.ok) throw new Error(`fetch failed: ${response.status}`);
-  return await response.text();
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`fetch failed: ${response.status}`);
+    }
+    return await response.text();
 }
 
 const siteData = await fetchXml(`${cityPageBaseUrl}/${provinceSlashCityFile}`);
