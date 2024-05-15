@@ -1,1 +1,1 @@
-wrapper/node
+wrapper/node.bash

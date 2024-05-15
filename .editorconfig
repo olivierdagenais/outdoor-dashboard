@@ -191,6 +191,16 @@ ij_typescript_while_brace_force = always
 ij_typescript_while_on_new_line = false
 ij_typescript_wrap_comments = true
 
+[{*.bash,*.sh,*.zsh}]
+indent_size = 2
+tab_width = 2
+ij_shell_binary_ops_start_line = false
+ij_shell_keep_column_alignment_padding = false
+ij_shell_minify_program = false
+ij_shell_redirect_followed_by_space = false
+ij_shell_switch_cases_indented = false
+ij_shell_use_unix_line_separator = true
+
 [{*.markdown,*.md}]
 ij_markdown_force_one_space_after_blockquote_symbol = true
 ij_markdown_force_one_space_after_header_symbol = true
