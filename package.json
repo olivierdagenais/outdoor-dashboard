@@ -6,7 +6,9 @@
     "build": "rimraf dist && observable build",
     "dev": "observable preview",
     "deploy": "observable deploy",
-    "observable": "observable"
+    "observable": "observable",
+    "test": "vitest run",
+    "liveTest": "vitest"
   },
   "dependencies": {
     "@observablehq/framework": "latest",
@@ -16,7 +18,8 @@
   "devDependencies": {
     "@types/geojson": "^7946.0.14",
     "@types/node": "^20.12.8",
-    "rimraf": "^5.0.5"
+    "rimraf": "^5.0.5",
+    "vitest": "^1.6.0"
   },
   "engines": {
     "node": ">=18"
