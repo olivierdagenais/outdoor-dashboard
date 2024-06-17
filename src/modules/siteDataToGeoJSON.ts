@@ -10,6 +10,13 @@ export function siteDataToGeoJSON(doc: Document): Feature {
     const forecast = new Forecast();
     forecast.type = "Feature";
     forecast.properties = {};
+    const result = doc.evaluate(
+        "//siteData/dateTime[@name='xmlCreation' and @zone='UTC']/timeStamp/text()",
+        doc,
+        null,
+        2
+    );
+    forecast.properties["updated"] = utcTimeStampToIso8601(result.stringValue);
     return forecast;
 }
 
