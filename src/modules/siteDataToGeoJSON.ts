@@ -1,22 +1,46 @@
-import {Feature, Geometry, GeoJsonProperties} from "geojson";
+import {Feature, GeoJsonProperties, Geometry} from "geojson";
 
 class Forecast implements Feature {
+    constructor() {
+        this.type = "Feature";
+        this.properties = {};
+    }
+
     geometry: Geometry;
     properties: GeoJsonProperties;
     type: "Feature";
 }
 
+class SiteData {
+    constructor(doc: Document) {
+        this.doc = doc;
+    }
+
+    doc: Document;
+
+    getString(expression: string): String | null {
+        const xPathResult = this.doc.evaluate(
+            expression,
+            this.doc,
+            null,
+            2
+        );
+        const result = xPathResult.stringValue;
+        return result;
+    }
+
+    getDateTime(expression: string): String | null {
+        const stringValue = this.getString(expression);
+        return stringValue ? utcTimeStampToIso8601(stringValue) : null;
+    }
+}
+
 export function siteDataToGeoJSON(doc: Document): Feature {
     const forecast = new Forecast();
-    forecast.type = "Feature";
-    forecast.properties = {};
-    const result = doc.evaluate(
-        "//siteData/dateTime[@name='xmlCreation' and @zone='UTC']/timeStamp/text()",
-        doc,
-        null,
-        2
+    const siteData = new SiteData(doc);
+    forecast.properties["updated"] = siteData.getDateTime(
+        "//siteData/dateTime[@name='xmlCreation' and @zone='UTC']/timeStamp/text()"
     );
-    forecast.properties["updated"] = utcTimeStampToIso8601(result.stringValue);
     return forecast;
 }
 
