@@ -37,8 +37,14 @@ class SiteData {
         return result;
     }
 
-    getDateTime(expression: string): String | null {
-        const stringValue = this.getString(expression);
+    getDateTime(name: string, scope?: String | null): String | null {
+        const relativeExpression
+            = `dateTime[@name='${name}' and @zone='UTC']/timeStamp/text()`;
+        const absoluteExpression = scope
+            ? scope + "/" + relativeExpression
+            : relativeExpression
+        ;
+        const stringValue = this.getString(absoluteExpression);
         return stringValue ? utcTimeStampToIso8601(stringValue) : null;
     }
 }
@@ -46,9 +52,7 @@ class SiteData {
 export function siteDataToGeoJSON(doc: Document): Feature {
     const forecast = new Forecast();
     const siteData = new SiteData(doc);
-    forecast.properties["updated"] = siteData.getDateTime(
-        "dateTime[@name='xmlCreation' and @zone='UTC']/timeStamp/text()"
-    );
+    forecast.properties["updated"] = siteData.getDateTime("xmlCreation");
     return forecast;
 }
 
