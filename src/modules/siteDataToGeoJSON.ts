@@ -14,14 +14,22 @@ class Forecast implements Feature {
 class SiteData {
     constructor(doc: Document) {
         this.doc = doc;
+        const xPathResult = doc.evaluate(
+            "//siteData",
+            this.doc,
+            null,
+            9
+        );
+        this.siteData = xPathResult.singleNodeValue;
     }
 
     doc: Document;
+    siteData: Node;
 
     getString(expression: string): String | null {
         const xPathResult = this.doc.evaluate(
             expression,
-            this.doc,
+            this.siteData,
             null,
             2
         );
@@ -39,7 +47,7 @@ export function siteDataToGeoJSON(doc: Document): Feature {
     const forecast = new Forecast();
     const siteData = new SiteData(doc);
     forecast.properties["updated"] = siteData.getDateTime(
-        "//siteData/dateTime[@name='xmlCreation' and @zone='UTC']/timeStamp/text()"
+        "dateTime[@name='xmlCreation' and @zone='UTC']/timeStamp/text()"
     );
     return forecast;
 }
