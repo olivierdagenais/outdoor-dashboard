@@ -53,6 +53,7 @@ export function siteDataToGeoJSON(doc: Document): Feature {
     const forecast = new Forecast();
     const siteData = new SiteData(doc);
     forecast.properties["generatedAt"] = siteData.getDateTime("xmlCreation");
+    forecast.properties["updated"] = siteData.getDateTime("forecastIssue", "hourlyForecastGroup");
     return forecast;
 }
 
