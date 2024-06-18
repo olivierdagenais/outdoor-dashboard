@@ -900,7 +900,7 @@ evening.</textSummary>
 
     assert.isNotNull(actual);
     assert.equal(actual.type, "Feature");
-    assert.equal(actual.properties["updated"], "2024-06-14T01:01:41+00:00");
+    assert.equal(actual.properties["generatedAt"], "2024-06-14T01:01:41+00:00");
     // TODO: more useful assertions
 });
 

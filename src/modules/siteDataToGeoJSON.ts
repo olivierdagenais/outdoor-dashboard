@@ -52,7 +52,7 @@ class SiteData {
 export function siteDataToGeoJSON(doc: Document): Feature {
     const forecast = new Forecast();
     const siteData = new SiteData(doc);
-    forecast.properties["updated"] = siteData.getDateTime("xmlCreation");
+    forecast.properties["generatedAt"] = siteData.getDateTime("xmlCreation");
     return forecast;
 }
 
