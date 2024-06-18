@@ -27,9 +27,14 @@ class SiteData {
     siteData: Node;
 
     getString(expression: string): String | null {
-        const xPathResult = this.doc.evaluate(
+        return SiteData.getString(this.siteData, expression);
+    }
+
+    static getString(node: Node, expression: string): string | null {
+        const doc = node.ownerDocument;
+        const xPathResult = doc.evaluate(
             expression,
-            this.siteData,
+            node,
             null,
             2
         );
