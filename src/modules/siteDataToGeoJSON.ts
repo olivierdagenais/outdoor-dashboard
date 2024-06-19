@@ -26,11 +26,11 @@ class SiteData {
     doc: Document;
     siteData: Node;
 
-    getString(expression: string): String | null {
+    getString(expression: string): string {
         return SiteData.getString(this.siteData, expression);
     }
 
-    static getString(node: Node, expression: string): string | null {
+    static getString(node: Node, expression: string): string {
         const doc = node.ownerDocument;
         const xPathResult = doc.evaluate(
             expression,
@@ -42,7 +42,7 @@ class SiteData {
         return result;
     }
 
-    getDateTime(name: string, scope?: String | null): String | null {
+    getDateTime(name: string, scope?: string | null): string {
         const relativeExpression
             = `dateTime[@name='${name}' and @zone='UTC']/timeStamp/text()`;
         const absoluteExpression = scope
@@ -50,7 +50,7 @@ class SiteData {
             : relativeExpression
         ;
         const stringValue = this.getString(absoluteExpression);
-        return stringValue ? utcTimeStampToIso8601(stringValue) : null;
+        return <string>utcTimeStampToIso8601(stringValue);
     }
 }
 
