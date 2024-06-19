@@ -63,7 +63,10 @@ export function siteDataToGeoJSON(doc: Document): Feature {
 }
 
 // 20240614010141 -> 2024-06-14T01:01:41+00:00
-export function utcTimeStampToIso8601(timeStamp: string): string {
+export function utcTimeStampToIso8601(timeStamp: string | null): string | null {
+    if (!timeStamp) {
+        return null;
+    }
     const seconds = timeStamp.slice(12, 14);
     const result =
         timeStamp.slice(0, 4) +

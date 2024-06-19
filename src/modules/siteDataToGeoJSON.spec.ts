@@ -905,6 +905,14 @@ evening.</textSummary>
     // TODO: more useful assertions
 });
 
+test("utcTimeStampToIso8601 null", () => {
+    const input = null;
+
+    const actual = utcTimeStampToIso8601(input);
+
+    assert.equal(actual, null);
+});
+
 test("utcTimeStampToIso8601 2024 June 14, 01:01 UTC", () => {
     const input = "20240614010141";
 
