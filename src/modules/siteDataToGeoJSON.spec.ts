@@ -912,3 +912,11 @@ test("utcTimeStampToIso8601 2024 June 14, 01:01 UTC", () => {
 
     assert.equal(actual, "2024-06-14T01:01:41+00:00");
 });
+
+test("utcTimeStampToIso8601 2024 June 14, 01:01 UTC, no seconds", () => {
+    const input = "202406140101";
+
+    const actual = utcTimeStampToIso8601(input);
+
+    assert.equal(actual, "2024-06-14T01:01:00+00:00");
+});
