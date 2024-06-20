@@ -1,7 +1,44 @@
 import {assert, test} from "vitest";
 import {JSDOM} from "jsdom";
-import {siteDataToGeoJSON, utcTimeStampToIso8601} from "./siteDataToGeoJSON";
+import {SiteData, siteDataToGeoJSON, utcTimeStampToIso8601} from "./siteDataToGeoJSON";
 import {Feature} from "geojson";
+
+test("hourlyForecastToPeriod", () => {
+    const dom: JSDOM = new JSDOM(`
+      <hourlyForecast dateTimeUTC="202406140200">
+         <condition>A few showers or thunderstorms</condition>
+         <iconCode format="png">19</iconCode>
+         <temperature unitType="metric" units="C">20</temperature>
+         <lop category="High" units="%">80</lop>
+         <windChill unitType="metric"/>
+         <humidex unitType="metric">26</humidex>
+         <wind>
+            <speed unitType="metric" units="km/h">20</speed>
+            <direction windDirFull="Southwest">SW</direction>
+            <gust unitType="metric" units="km/h"/>
+         </wind>
+      </hourlyForecast>`);
+    const doc: Document = dom.window.document;
+    // JSDOM makes everything an HTML document,
+    // so we get extra elements when parsing XML
+    const xPathResult = doc.evaluate(
+        "//hourlyForecast",
+        doc,
+        null,
+        9
+    );
+    const node = xPathResult.singleNodeValue;
+
+    const actual = SiteData.hourlyForecastToPeriod(node);
+
+    assert.equal(actual.startTime, "2024-06-14T02:00:00+00:00");
+    assert.equal(actual.temperature, 20);
+    assert.equal(actual.temperatureUnit, "C");
+    assert.equal(actual.icon, "https://meteo.gc.ca/weathericons/19.gif");
+    assert.equal(actual.windSpeed, "20 km/h");
+    assert.equal(actual.windDirection, "SW");
+    assert.equal(actual.shortForecast, "A few showers or thunderstorms");
+});
 
 function testSiteDataToGeoJSON(xml: string): Feature {
     const dom: JSDOM = new JSDOM(xml);
