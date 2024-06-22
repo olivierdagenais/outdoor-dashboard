@@ -1,6 +1,6 @@
 import {assert, test} from "vitest";
 import {JSDOM} from "jsdom";
-import {SiteData, siteDataToGeoJSON, utcTimeStampToIso8601} from "./siteDataToGeoJSON";
+import {Period, SiteData, siteDataToGeoJSON, utcTimeStampToIso8601} from "./siteDataToGeoJSON";
 import {Feature} from "geojson";
 
 test("hourlyForecastToPeriod", () => {
@@ -939,6 +939,10 @@ evening.</textSummary>
     assert.equal(actual.type, "Feature");
     assert.equal(actual.properties["generatedAt"], "2024-06-14T01:01:41+00:00");
     assert.equal(actual.properties["updated"], "2024-06-13T19:30:00+00:00");
+    const periods: Period[] = actual.properties["periods"];
+    assert.isDefined(periods);
+    assert.isNotNull(periods);
+    assert.equal(periods.length, 24);
     // TODO: more useful assertions
 });
 

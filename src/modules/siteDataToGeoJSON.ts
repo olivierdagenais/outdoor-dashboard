@@ -21,7 +21,7 @@ class TypedValue {
     value: number;
 }
 
-class Period {
+export class Period {
     number: number;
     startTime: string | null;
     endTime: string;
@@ -124,6 +124,23 @@ export function siteDataToGeoJSON(doc: Document): Feature {
     const siteData = new SiteData(doc);
     forecast.properties["generatedAt"] = siteData.getDateTime("xmlCreation");
     forecast.properties["updated"] = siteData.getDateTime("forecastIssue", "hourlyForecastGroup");
+    const periods: Period[] = [];
+    const xPathResult = doc.evaluate(
+        ".//hourlyForecastGroup//hourlyForecast",
+        siteData.siteData,
+        null,
+        5
+    );
+    let hourlyForecastNode = xPathResult.iterateNext();
+    let number = 1;
+    while (hourlyForecastNode) {
+        const period = SiteData.hourlyForecastToPeriod(hourlyForecastNode);
+        period.number = number;
+        periods.push(period);
+        number++;
+        hourlyForecastNode = xPathResult.iterateNext();
+    }
+    forecast.properties["periods"] = periods;
     return forecast;
 }
 
